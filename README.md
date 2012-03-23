@@ -15,7 +15,7 @@ This package allows a web developer to quickly add Duo's interactive, self-servi
 What's here:
 
 * `js` - Duo Javascript library, to be hosted by your webserver.
-* `duo_web.pl` - Duo Perl SDK to be integrated with your web application
+* `DuoWeb.pm` - Duo Perl SDK to be integrated with your web application
 * `test.pl` -  Unit tests for our SDK
 
 # Usage
