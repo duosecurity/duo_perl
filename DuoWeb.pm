@@ -111,7 +111,9 @@ sub sign_request {
 =pod
 
     Validate the signed response returned from Duo.
-    Returns the username of the authenticated user, or None.
+
+    Returns the username of the authenticated user, or '' (empty
+    string) if secondary authentication was denied.
 
     Arguments:
 
