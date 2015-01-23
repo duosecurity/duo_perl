@@ -40,10 +40,15 @@ sub _sign_vals {
 
 
 sub _parse_vals {
-    my ($key, $val, $prefix) = @_;
+    my ($key, $val, $prefix, $ikey) = @_;
 
     my $ts = time;
-    my ($u_prefix, $u_b64, $u_sig) = split /\|/, $val;
+
+    my @parts = split /\|/, $val;
+    if (scalar(@parts) != 3) {
+        return '';
+    }
+    my ($u_prefix, $u_b64, $u_sig) = @parts;
 
     my $sig = hmac_sha1_hex("$u_prefix|$u_b64", $key);
 
@@ -55,7 +60,15 @@ sub _parse_vals {
         return '';
     }
 
-    my ($user, $ikey, $exp) = split /\|/, decode_base64($u_b64);
+    my @cookie_parts = split /\|/, decode_base64($u_b64);
+    if (scalar(@cookie_parts) != 3) {
+        return '';
+    }
+    my ($user, $u_ikey, $exp) = @cookie_parts;
+
+    if ($u_ikey ne $ikey) {
+        return '';
+    }
 
     if ($ts >= $exp) {
         return '';
@@ -81,6 +94,10 @@ sub sign_request {
     my ($ikey, $skey, $akey, $username) = @_;
 
     if (not $username) {
+        return $ERR_USER;
+    }
+
+    if (index($username, '|') != -1) {
         return $ERR_USER;
     }
 
@@ -128,8 +145,8 @@ sub verify_response {
     my ($ikey, $skey, $akey, $sig_response) = @_;
 
     my ($auth_sig, $app_sig) = split /:/, $sig_response;
-    my $auth_user = _parse_vals($skey, $auth_sig, $AUTH_PREFIX);
-    my $app_user  = _parse_vals($akey, $app_sig, $APP_PREFIX);
+    my $auth_user = _parse_vals($skey, $auth_sig, $AUTH_PREFIX, $ikey);
+    my $app_user  = _parse_vals($akey, $app_sig, $APP_PREFIX, $ikey);
 
     if ($auth_user ne $app_user) {
         return '';
