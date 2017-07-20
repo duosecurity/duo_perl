@@ -1,7 +1,8 @@
-package DuoWeb;
-
+package Duo::Web;
 use strict;
 use warnings;
+
+our $VERSION = '1.0';
 
 use MIME::Base64;
 use Digest::HMAC_SHA1 qw(hmac_sha1_hex);
