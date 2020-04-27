@@ -1,6 +1,10 @@
 # Overview
 
 [![Build Status](https://travis-ci.org/duosecurity/duo_perl.svg?branch=master)](https://travis-ci.org/duosecurity/duo_perl)
+[![Issues](https://img.shields.io/github/issues/duosecurity/duo_perl)](https://github.com/duosecurity/duo_perl/issues)
+[![Forks](https://img.shields.io/github/forks/duosecurity/duo_perl)](https://github.com/duosecurity/duo_perl/network/members)
+[![Stars](https://img.shields.io/github/stars/duosecurity/duo_perl)](https://github.com/duosecurity/duo_perl/stargazers)
+[![License](https://img.shields.io/badge/License-View%20License-orange)](https://github.com/duosecurity/duo_perl/blob/master/LICENSE)
 
 **duo_perl** - Duo two-factor authentication for Perl web applications
 
