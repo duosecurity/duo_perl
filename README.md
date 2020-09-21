@@ -20,6 +20,13 @@ What's here:
 
 Developer documentation: <http://www.duosecurity.com/docs/duoweb>
 
+# Testing
+
+```
+$ perl Makefile.PL
+$ make test
+```
+
 # Support
 
 Report any bugs, feature requests, etc. to us directly:
