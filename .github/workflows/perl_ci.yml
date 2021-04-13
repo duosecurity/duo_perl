@@ -1,4 +1,4 @@
-name: PERL CI
+name: Perl CI
 on:
   push:
     branches:
