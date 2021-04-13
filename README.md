@@ -1,6 +1,6 @@
 # Overview
 
-[![Build Status](https://travis-ci.org/duosecurity/duo_perl.svg?branch=master)](https://travis-ci.org/duosecurity/duo_perl)
+[![Build Status](https://github.com/duosecurity/duo_perl/workflows/Perl%20CI/badge.svg)](https://github.com/duosecurity/duo_perl/actions)
 [![Issues](https://img.shields.io/github/issues/duosecurity/duo_perl)](https://github.com/duosecurity/duo_perl/issues)
 [![Forks](https://img.shields.io/github/forks/duosecurity/duo_perl)](https://github.com/duosecurity/duo_perl/network/members)
 [![Stars](https://img.shields.io/github/stars/duosecurity/duo_perl)](https://github.com/duosecurity/duo_perl/stargazers)

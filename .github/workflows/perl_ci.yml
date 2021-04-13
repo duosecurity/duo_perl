@@ -1,0 +1,34 @@
+name: Perl CI
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      -master
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        perl: [5.24, 5.26]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+    
+      - name: Setup PERL
+        uses: shogo82148/actions-setup-perl@d206bd5dd9f70ee09677d2c2a74972ad5157e422
+        with:
+          perl-version: ${{ matrix.perl }}
+    
+      - name: Install deps
+        run: cpanm --verbose --installdeps --notest .
+    
+      - name: Make
+        run: perl Makefile.PL
+
+      - name: Test
+        run: make test
